@@ -1,0 +1,25 @@
+import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import Newsletter from '../components/Newsletter.jsx'
+import ProductGrid from '../components/ProductGrid.jsx'
+import SectionHeading from '../components/SectionHeading.jsx'
+import { photo, products } from '../data/products.js'
+
+export default function HomePage({ onAdd }) {
+  return (
+    <main>
+      <section className="mx-auto grid max-w-[1440px] grid-cols-1 items-stretch px-5 pb-12 pt-8 sm:px-8 sm:pb-16 lg:grid-cols-[.88fr_1.12fr] lg:gap-10 lg:px-12 lg:pb-20 lg:pt-12">
+        <div className="relative z-10 flex flex-col justify-center py-8 lg:py-14"><p className="reveal mb-5 text-[10px] font-semibold uppercase tracking-[.22em] text-[#887963] sm:text-[11px]">A slower kind of everyday</p><h1 className="serif reveal max-w-[600px] text-[clamp(3.4rem,7vw,6.6rem)] leading-[.96]">Make room<br />for <em className="font-medium text-[var(--forest)]">meaning.</em></h1><p className="reveal-late mt-6 max-w-[390px] text-[14px] leading-7 text-[#666b62] sm:text-[15px]">Thoughtful objects for the everyday. Made by good hands, from honest materials, to be used and kept.</p><Link to="/products" className="reveal-late mt-8 inline-flex h-12 w-fit items-center gap-6 bg-[var(--forest)] px-5 text-[11px] font-semibold uppercase tracking-[.12em] text-white hover:bg-[#253a2d]">Shop the collection <ArrowRight size={16} /></Link><div className="mt-10 flex items-center gap-3 text-[10px] uppercase tracking-[.13em] text-[#777a70]"><span className="flex -space-x-2">{['photo-1534528741775-53994a69daeb', 'photo-1500648767791-00dcc994a43e', 'photo-1531123897727-8f129e1688ce'].map((image) => <img key={image} src={photo(image, 80)} alt="" className="size-7 rounded-full border-2 border-[var(--paper)] object-cover" />)}</span><span>Loved in 28,000+ homes</span></div></div>
+        <div className="relative min-h-[390px] overflow-hidden bg-[#d6d1c3] lg:min-h-[600px]"><img src={photo('photo-1616486338812-3dadae4b4ace', 1400)} alt="Sunlit, thoughtfully arranged living space with natural textures" className="absolute inset-0 size-full object-cover" /><div className="absolute bottom-4 left-4 flex items-center gap-3 bg-[var(--paper)]/95 px-3 py-2.5 sm:bottom-6 sm:left-6 sm:px-4 sm:py-3"><span className="serif text-[18px]">01 / 04</span><span className="h-7 w-px bg-[var(--line)]" /><span className="max-w-[140px] text-[9px] uppercase leading-4 tracking-[.12em] text-[#777a70]">Spaces that feel like you</span></div><span className="absolute right-5 top-5 flex size-16 items-center justify-center rounded-full border border-white/70 text-center text-[8px] uppercase leading-3 tracking-[.1em] text-white">Made<br />to stay</span></div>
+      </section>
+      <section className="border-y border-[var(--line)] bg-[#efeee7]"><div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-y-5 px-5 py-6 sm:grid-cols-4 sm:px-8 lg:px-12"><ValueItem number="01" title="Made with care" text="Small-batch, always." /><ValueItem number="02" title="Honest materials" text="Natural where possible." /><ValueItem number="03" title="Made to last" text="Less, but better." /><ValueItem number="04" title="Good people" text="Meet our makers." /></div></section>
+      <section className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"><SectionHeading eyebrow="Objects for everyday" title="The considered edit" link="Shop all" /><ProductGrid items={products.slice(0, 4)} onAdd={onAdd} /></section>
+      <section className="mx-auto grid max-w-[1440px] grid-cols-1 bg-[#e7e6dc] md:grid-cols-2"><div className="relative min-h-[330px] md:min-h-[490px]"><img src={photo('photo-1600210492486-724fe5c67fb0', 1200)} alt="A calm home interior with natural furnishings" className="absolute inset-0 size-full object-cover" /></div><div className="flex flex-col justify-center px-7 py-12 sm:px-12 lg:px-20"><p className="mb-4 text-[10px] font-semibold uppercase tracking-[.2em] text-[#887963]">Our point of view</p><h2 className="serif max-w-[500px] text-[38px] leading-[1.08] sm:text-[52px]">A good life is made of little things.</h2><p className="mt-5 max-w-[410px] text-[14px] leading-7 text-[#62675f]">We believe the things around us should earn their place. Form & Field brings together pieces with a purpose, a story, and a little soul.</p><Link to="/about" className="group mt-8 inline-flex w-fit items-center gap-3 border-b border-[#74796f] pb-2 text-[11px] font-semibold uppercase tracking-[.13em]">A little about us <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></Link></div></section>
+      <Newsletter />
+    </main>
+  )
+}
+
+function ValueItem({ number, title, text }) {
+  return <div className="flex gap-3 sm:gap-4"><span className="serif mt-0.5 text-[17px] text-[#8e765f]">{number}</span><div><p className="text-[11px] font-semibold sm:text-[12px]">{title}</p><p className="mt-1 text-[10px] text-[#777a70] sm:text-[11px]">{text}</p></div></div>
+}
