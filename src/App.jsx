@@ -8,10 +8,19 @@ import AboutPage from './pages/AboutPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
+import { CartProvider } from './context/CartContext';
+
 
 export default function App() {
   const [cartCount, setCartCount] = useState(0)
   const addToCart = () => setCartCount((count) => count + 1)
+   return (
+    <CartProvider>
+      {/* Your router or main components */}
+    </CartProvider>
+  );
+}
+export default function App() {
 
   return (
     <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)]">
